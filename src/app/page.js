@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import anime from "animejs";
 import "./button.scss";
 import "./modal.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [modalClass, setModalClass] = useState("");
