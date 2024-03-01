@@ -798,7 +798,7 @@ function FinalDashboard({ setCurrentCharacter, isFinalBodyActive }) {
           </div>
         </div>
         <div className={"referal-overview " + (isFinalBodyActive && "active")}>
-          <div className="ref-title">REFFERAL OVERVIEW</div>
+          <div className="ref-title">REFERRAL OVERVIEW</div>
         </div>
         <div
           className={"second-crew-container " + (isFinalBodyActive && "active")}
