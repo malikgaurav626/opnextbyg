@@ -334,13 +334,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* height: 100vh; */
+  height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden !important;
   z-index: 2;
 }
 #layer-1 img {
-  height: 100%;
   width: 100%;
 }
 
