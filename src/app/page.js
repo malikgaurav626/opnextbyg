@@ -168,6 +168,10 @@ function CharacterMenu({
     },
   ];
 
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
   return (
     <>
       <div id="modal-container" className={modalClass}>
@@ -213,7 +217,28 @@ function CharacterMenu({
               </div>
             </div>
             <div className="modall-body mt-3">
-              <div className="character-container" id="character-container-id">
+              <div
+                className="character-container"
+                id="character-container-id"
+                onMouseDown={(e) => {
+                  setIsMouseDown(true);
+                  setStartX(e.pageX - e.currentTarget.offsetLeft);
+                  setScrollLeft(e.currentTarget.scrollLeft);
+                }}
+                onMouseLeave={() => {
+                  setIsMouseDown(false);
+                }}
+                onMouseUp={() => {
+                  setIsMouseDown(false);
+                }}
+                onMouseMove={(e) => {
+                  if (!isMouseDown) return;
+                  e.preventDefault();
+                  const x = e.pageX - e.currentTarget.offsetLeft;
+                  const walk = (x - startX) * 3; // 3 is the scroll speed
+                  e.currentTarget.scrollLeft = scrollLeft - walk;
+                }}
+              >
                 {characters.map((character, index) => (
                   <div
                     className="character"
@@ -683,6 +708,8 @@ function FinalDashboard({ setCurrentCharacter, isFinalBodyActive }) {
     document.getElementById("modal-container").classList.remove("out");
     document.getElementById("modal-container").classList.add("one");
   };
+
+  const handleClaimNow = () => {};
   return (
     <>
       <div
@@ -802,7 +829,9 @@ function FinalDashboard({ setCurrentCharacter, isFinalBodyActive }) {
         <div
           className={"character-menu-final " + (isFinalBodyActive && "active")}
         >
-          <div className="claim-now">CLAIM NOW</div>
+          <div className="claim-now" onClick={handleClaimNow}>
+            CLAIM NOW
+          </div>
           <div className="inner-character-menu" onClick={handleButtonClick}>
             <img src="/zoro.jpg"></img>
           </div>

@@ -542,6 +542,7 @@ body {
   font-family: "Quantum";
   font-size: 40px;
   transition: 0.3s all;
+  transform: translateX(15px);
   background: linear-gradient(to right, #ffffff00, #ffffff00);
 }
 .character:hover .character-pick-btn {
